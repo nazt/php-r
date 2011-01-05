@@ -1,5 +1,5 @@
 <?php
-	$index = getIndex();
+  $index = getIndex();
   // print_r($index);
 
   printMatrix($index);
@@ -8,8 +8,8 @@
   printMatrix($index);
   printf(" cos %s & %s = %f", $argv[1], $argv[2], cosineSim($argv[1], $argv[2], $index['dictionary']));
   newline();
-function printMatrix($index)    
-{
+
+function printMatrix($index) {
   	/* print docID */
     printf("%10s",'vocab/doc');
     foreach ($index['docCount'] as $key => $value) {
@@ -37,10 +37,8 @@ function cosineSim($docA, $docB, $dict) {
         return $result;
 }
 
-function normalize(&$index)    
-{ 
+function normalize(&$index) { 
   $sum_square = sum_square($index['dictionary']);
- // print_r($sum_square);
   foreach ($index['dictionary'] as $vocab => $entry) {
     foreach ($entry['postings'] as $docID => $value) {
       $index['dictionary'][$vocab]['postings'][$docID]['tf'] = $value['tf']/sqrt($sum_square[$docID]);
@@ -48,8 +46,7 @@ function normalize(&$index)
   }
 }
  
-function sum_square($doc)
-{
+function sum_square($doc) {
   $sum_square = array();
   foreach ($doc as $vocab => $entry) {
     foreach ($entry['postings'] as $docID => $value) {
@@ -60,10 +57,10 @@ function sum_square($doc)
   return $sum_square;
 }
 
-function collection($value='')
-{
+function collection($value='') {
   $collection = array();
 }
+
 function getIndex() {
 	$collection = array(
 	        'doc1' => 'Both of the classifiers we\'ve looked at here will work best if the data is linearly separable so that literally a line (or more accurately a hyperplane) can be drawn through the document space that has all of one group on one side, and all of the other group on the other side.',
@@ -101,11 +98,8 @@ function getTfidf($term) {
                 echo "\n";
         }
 }
-?>
-<?php
 
-function newline($value='1')
-{
+function newline($value='1') {
   for ($i=0; $i < $value; $i++) { 
     echo "\n";
   }
