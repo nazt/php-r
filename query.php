@@ -63,13 +63,14 @@ function collection($value='') {
 
 function getIndex() {
 	$collection = array(
-	        'doc1' => 'Both of the classifiers we\'ve looked at here will work best if the data is linearly separable so that literally a line (or more accurately a hyperplane) can be drawn through the document space that has all of one group on one side, and all of the other group on the other side.',
-	        'doc2' => 'this one isn\'t quite like the rest but is here',
-	        'doc3' => 'this is a different short string that\' not as short'
+	        'doc1' => 'My name is nat weerawan',
+	        'doc2' => 'my nat weerawan',
+	        'doc3' => 'I am an opendreamer'
 	);
 	$dictionary = array();
 	$docCount = array();
 	foreach($collection as $docID => $doc) {
+    $doc = strtolower($doc);
 		$terms = explode(' ', $doc);
 		$docCount[$docID] = count($terms);
 		foreach($terms as $term) {
