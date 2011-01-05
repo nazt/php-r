@@ -2,13 +2,26 @@
   $index = getIndex();
   // print_r($index);
 
+  printf ("%33s\n", "----- Raw matrix -----");
   printMatrix($index);
   normalize($index);
   newline(3);
+  printf ("%40s\n", "----- Normalized matrix -----");
   printMatrix($index);
-  printf(" cos %s & %s = %f", $argv[1], $argv[2], cosineSim($argv[1], $argv[2], $index['dictionary']));
+  printf ("%s\n\n", "==========================================");
+  printf("\t*** %s ***\n", "Similarity Score");
+  print_calculated_score($argv[1], $argv[2], $index['dictionary']);
+  printf ("%s\n", "==========================================");
+  printf ("\t%s\n", "== DEBUG ==");
+  print_calculated_score('doc1', 'doc2', $index['dictionary']);
+  print_calculated_score('doc1', 'doc3', $index['dictionary']);
+  print_calculated_score('doc2', 'doc1', $index['dictionary']);
   newline();
 
+function print_calculated_score ($docA, $docB, $dict) {
+  $cosine_score = cosineSim($docA, $docB, $dict);
+  printf(" -- cos (%s & %s) = %.2f%% [%f]\n", $docA, $docB, $cosine_score, $cosine_score);
+}
 function printMatrix($index) {
   	/* print docID */
     printf("%10s",'vocab/doc');
