@@ -96,7 +96,6 @@ function getIndex() {
 			}
 			$dictionary[$term]['postings'][$docID]['tf']++;
 		}
-		//	print_r($dictionary);
 	 //		echo "------------------------------------------------------------ \n";
 	}
 	return array('docCount' => $docCount, 'dictionary' => $dictionary);
